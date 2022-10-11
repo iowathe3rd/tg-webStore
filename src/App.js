@@ -7,12 +7,7 @@ function App() {
 		tg.ready();
 	});
 
-	return (
-		<div className="App">
-			workin
-			<button onClick={onClose}>Закрыть</button>
-		</div>
-	);
+	return <div className="App">workin</div>;
 }
 
 export default App;
