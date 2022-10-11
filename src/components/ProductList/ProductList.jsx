@@ -86,6 +86,27 @@ function ProductList() {
 		}
 	};
 
+	const onSendData = useCallback(() => {
+		const data = {
+			products: addedItems,
+			totalPrice: getTotalPrice(addedItems),
+		};
+		fetch("https://localhost:8000", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(data),
+		});
+	}, []);
+
+	useEffect(() => {
+		tg.onEvent("mainButtonClicked", onSendData);
+		return () => {
+			tg.offEvent("mainButtonClicked", onSendData);
+		};
+	}, [onSendData]);
+
 	return (
 		<div className={"list"}>
 			{products.map((item) => (
