@@ -64,7 +64,7 @@ function ProductList() {
 	const { tg } = useTelegram();
 	const [addedItems, setAddedItems] = useState([]);
 
-	const onAdd = () => {
+	const onAdd = (product) => {
 		const alreadyAdded = addedItems.find((item) => item.id === product.id);
 		let newItems = [];
 
@@ -76,12 +76,12 @@ function ProductList() {
 
 		setAddedItems(newItems);
 
-		if (newItems.lenght === 0) {
+		if (newItems.length === 0) {
 			tg.MainButton.hide();
 		} else {
 			tg.MainButton.show();
 			tg.MainButton.setParams({
-				text: `Купить ${getTotalPrice(newItems)} `,
+				text: `Купить ${getTotalPrice(newItems)}`,
 			});
 		}
 	};
