@@ -1,5 +1,5 @@
 import React from "react";
-import "button.css";
+import "./button.css";
 
 function Button(props) {
 	<button {...props} className={"button " + props.className} />;
