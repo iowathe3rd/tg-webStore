@@ -61,7 +61,7 @@ const getTotalPrice = (items = []) => {
 };
 
 function ProductList() {
-	const { tg } = useTelegram();
+	const { tg, queryId } = useTelegram();
 	const [addedItems, setAddedItems] = useState([]);
 
 	const onAdd = (product) => {
@@ -90,6 +90,7 @@ function ProductList() {
 		const data = {
 			products: addedItems,
 			totalPrice: getTotalPrice(addedItems),
+			queryId,
 		};
 		fetch("https://localhost:8000", {
 			method: "POST",
